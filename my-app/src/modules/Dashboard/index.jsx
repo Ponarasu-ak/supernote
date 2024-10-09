@@ -8,7 +8,7 @@ let todoData = {
   tags: [
     { id: 1, checked: false, text: "Notes" },
     { id: 2, checked: false, text: "Study" },
-    { id: 3, checked: false, text: "Work" },
+    { id: 3, checked: false, text: "Works" },
   ],
 };
 
@@ -16,6 +16,11 @@ function Dashboard() {
   const [isopen, setisopen] = useState(false);
 
   const [data, setdata] = useState(todoData);
+
+  const [mainArray, setMainArray] = useState([]);
+
+  console.log(mainArray,'xxxxxxxxxxxxxxxxxxxxx');
+  
 
   return (
     <div className="w-full h-screen box-border">
@@ -34,36 +39,42 @@ function Dashboard() {
         className="md:flex fixed top-[80px] w-full"
         style={{ height: "calc(100% - 80px)" }}
       >
-        <aside className=" flex justify-around md:justify-start items-center md:flex-col md:text-xl md:font-semibold  md:pt-8 md:gap-5 md:w-[20%] h-12 md:h-full">
+        <aside className=" flex justify-around gap-0 md:justify-start items-center md:flex-col md:text-xl md:font-semibold  md:pt-8 md:gap-5 md:w-[20%] h-12 md:h-full">
           <div className="cursor-pointer flex justify-between items-center">
-            <span className="text-[45px] md:text-[50px] text-red-300 pb-3 px-1 md:pr-3 md:px-0 md:pb-3">
+            <span className="text-[45px] md:text-[70px] text-red-300 pb-3  md:pr-4 md:px-0 md:pb-4">
               ●
             </span>
-            Home
+            <span className=" px-1">Home</span>
           </div>
           <div className="cursor-pointer flex justify-between items-center ">
-            <span className="text-[45px] md:text-[50px] text-amber-300 pb-3 px-1 md:pr-3 md:px-0 md:pb-3">
+            <span className="text-[45px] md:text-[70px] text-amber-300 pb-3  md:pr-4 md:px-0 md:pb-4">
               ●
             </span>
-            Notes
+            <span className=" px-1">Notes</span>
           </div>
           <div className="cursor-pointer flex justify-between items-center">
-            <span className="text-[45px] md:text-[50px] text-green-300 pb-3 px-1 md:pr-3 md:px-0 md:pb-3">
+            <span className="text-[45px] md:text-[70px] text-green-300 pb-3  md:pr-4 md:px-0 md:pb-4">
               ●
             </span>
-            Study
+            <span className=" px-1">Study</span>
           </div>
           <div className="cursor-pointer flex justify-between items-center">
-            <span className="text-[45px] md:text-[50px] text-cyan-300 pb-3 px-1 md:pr-3 md:px-0 md:pb-3">
+            <span className="text-[45px] md:text-[70px] text-cyan-300 pb-3  md:pr-3 md:px-0 md:pb-4">
               ●
             </span>
-            Work
+            <span className=" px-1">Works</span>
           </div>
         </aside>
         <section className=" w-full md:w-[84%] h-full"></section>
       </div>
       {isopen ? (
-        <Popup setdata={setdata} data={data} setisopen={setisopen} />
+        <Popup
+          setdata={setdata}
+          data={data}
+          setisopen={setisopen}
+          setMainArray={setMainArray}
+          mainArray={mainArray}
+        />
       ) : (
         ""
       )}
